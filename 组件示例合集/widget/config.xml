@@ -1,0 +1,28 @@
+ <widget id="A6032809703585"  version="0.0.1">
+
+    <name>组件示例</name>
+
+    <description>
+
+        Example For APICloud.
+
+    </description>
+
+    <author email="developer@apicloud.com" href="http://www.apicloud.com">
+
+        Developer
+
+    </author>
+
+    <content src="config.json" />
+
+    <access origin="*" />
+
+	<preference name="debug" value="true"/>
+
+	<preference name="statusBarAppearance" value="true"/>
+
+    <preference name="avm" value="true"/>
+
+</widget>
+

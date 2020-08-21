@@ -1,0 +1,30 @@
+<template>
+    <scroll-view class="main" scrollY>
+        <input placeholder="输入限制为10，自动获取焦点" maxlength="10" autofocus/>
+        <input type="password" placeholder="密码输入框"/>
+        <input placeholder="数字键盘" keyboardType="number"/>
+        <input placeholder="键盘完成按钮文字为搜索" confirmType="search" onconfirm={this.onconfirm}/>
+    </scroll-view>
+</template>
+<style>
+	.main {
+        width: 100%;
+        height: 100%;
+	}
+    input {
+        margin: 8px;
+        width: auto;
+    }
+</style>
+<script>
+    export default {
+        name: 'test',
+        methods:{
+            onconfirm(e){
+                api.alert({
+                    msg: '搜索' + e.detail.value
+                });
+            }
+        }
+    }
+</script>

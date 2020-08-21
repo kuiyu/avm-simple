@@ -1,0 +1,58 @@
+<template>
+    <scroll-view class="main" scrollY>
+        <text>组件置于label内部</text>
+		<checkbox-group onChange={this.checkboxgroupChanged}>
+			<label class="item">
+				<checkbox checked value="checkbox_c"/>
+				<text>中国</text>
+			</label>
+			<label class="item">
+				<checkbox value="checkbox_a"/>
+				<text>美国</text>
+			</label>
+		</checkbox-group>
+        <text>使用for找到表单组件</text>
+		<radio-group onChange={this.radiogroupChanged}>
+			<view class="item">
+				<radio id="china" checked value="radio_c"/>
+                <label for="china"><text>中国</text></label>
+			</view>
+			<view class="item">
+				<radio id="usa" value="radio_a"/>
+                <label for="usa"><text>美国</text></label>
+			</view>
+		</radio-group>
+    </scroll-view>
+</template>
+<style>
+	.main {
+        width: 100%;
+        height: 100%;
+	}
+    checkbox-group {
+        flex-direction:row;
+        margin: 5px;
+    }
+    radio-group {
+        flex-direction:row;
+        margin: 5px;
+    }
+    .item {
+        flex-direction:row;
+  	    align-items:center;
+        margin: 5px;
+    }
+</style>
+<script>
+    export default {
+        name: 'test',
+        methods:{
+            checkboxgroupChanged(e) {
+                console.log(e.detail.value);
+            },
+            radiogroupChanged(e) {
+                console.log(e.detail.value);
+            }
+        }
+    }
+</script>

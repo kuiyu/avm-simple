@@ -1,0 +1,82 @@
+<template>
+    <list-view id="listView" class="main" scrollToTop onscrolltolower={this.onscrolltolower}>
+		<cell onclick={this.itemClick}>
+			<text class="title">{item.title}</text>
+			<text class="subtitle">{item.subtitle}</text>
+		</cell>
+		<list-footer class="footer">
+			<text>加载中...</text>
+		</list-footer>
+    </list-view>
+</template>
+<style>
+	.main {
+        width: 100%;
+        height: 100%;
+	}
+    input {
+        margin: 8px;
+    }
+	cell {
+		padding: 8px;
+		height: 60px;
+		border-bottom: 0.5px solid #ddd;
+		background-color: #fff;
+	}
+	cell:active {
+		background-color: #ddd;
+	}
+	.title {
+		font-weight: bold;
+		font-size: 18px;
+		color: #000;
+	}
+	.subtitle {
+		color: #333;
+	}
+	.footer {
+		justify-content: center;
+		align-items: center;
+	}
+</style>
+<script>
+    export default {
+        name: 'test',
+        methods:{
+			apiready() {
+				this.initData(false);
+			},
+			initData(loadMore) {
+				var that = this;
+				var skip = that.dataList?that.dataList.length:0;
+				var dataList = [];
+				for (var i=0;i<20;i++) {
+					dataList[i] = {
+						title: '项目' + (i + skip),
+						subtitle: '这里是子标题'
+					}
+				}
+				var listView = document.getElementById('listView');
+				if (loadMore) {
+                    that.dataList = that.dataList.concat(dataList);
+					listView.insert({
+						data: dataList
+					});
+				} else {
+                    that.dataList = dataList;
+					listView.load({
+						data: dataList
+					});
+				}
+			},
+			onscrolltolower() {
+				this.initData(true);
+			},
+            itemClick(e) {
+                api.alert({
+                    msg: '当前项索引：' + e.target.index
+                });
+			}
+        }
+    }
+</script>

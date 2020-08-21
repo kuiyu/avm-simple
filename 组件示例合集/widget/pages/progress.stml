@@ -1,0 +1,22 @@
+<template>
+    <scroll-view class="main" scrollY>
+        <progress value="30"/>
+        <progress value="50" progressValueColor="#f00"/>
+        <progress value="90" animation/>
+    </scroll-view>
+</template>
+<style>
+	.main {
+        width: 100%;
+        height: 100%;
+	}
+    progress {
+        margin: 8px;
+        width: 60%;
+    }
+</style>
+<script>
+    export default {
+        name: 'test'
+    }
+</script>
